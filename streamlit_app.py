@@ -60,6 +60,7 @@ if streamlit.button('Get Fruit Load List'):
   # my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
     my_data_rows = get_fruit_load_list()
 # streamlit.text("Hello from Snowflake:")
+    my_cnx.close()
     streamlit.dataframe(my_data_rows)
   
 # Allow the end user to add a fruit to the list
@@ -74,6 +75,7 @@ if streamlit.button('Add a Fruit to the List'):
   back_from_function = insert_row_snowflake(add_my_fruit)
   # streamlit.my_data_rows.append(add_my_fruit)
   streamlit.text(back_from_function)
-
-  # don't run anything past here while we troubleshoot
+  my_cnx.close()
+  
+# don't run anything past here while we troubleshoot
 streamlit.stop()
